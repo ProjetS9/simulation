@@ -7,7 +7,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import evenement.Debut;
 
 
 public class Accueil extends JFrame{
@@ -139,7 +142,13 @@ public class Accueil extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				if(!NField.getText().equals("") && !NtField.getText().equals("") && !NtMaxField.getText().equals("")){
+					Debut debut = new Debut();
+					//debut.demarrer(Integer.parseInt(NField.getText()), Integer.parseInt(NtField.getText()), Integer.parseInt(NtMaxField.getText()));
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Les champs \"N\", \"Nt\" et \"NtMax\"\nne peut pas ¨ºtre vides!", "Erreur", JOptionPane.ERROR_MESSAGE); 
+				}
 			}
 		});
 		

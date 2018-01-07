@@ -4,15 +4,12 @@ import java.util.Random;
 
 import loi.Lois;
 import variable.ClientCourriel;
-import variable.ClientTelephone;
 
 
 public class ArrCouriel implements Runnable{
-	private String threadName;
 	private double DS;
 	
-	public ArrCouriel(String name,float DS){
-		this.threadName = name;
+	public ArrCouriel(double DS){
 		this.DS = DS;  //Mettre ид jour DS (DateSimu)
 	}
 	@Override

@@ -43,8 +43,8 @@ public class Debut {
 		var.setListTeleconseilleur(listTC);
 		
 		Lois loi = new Lois();
-		ArrTelephone arrTele=new ArrTelephone("Arrivee Telephone",DS+loi.exponentielle(5)); 
-		ArrCouriel arrCour=new ArrCouriel("Arrivee Courriel",DS); 
+		ArrTelephone arrTele=new ArrTelephone(DS+loi.exponentielle(5)); 
+		ArrCouriel arrCour=new ArrCouriel(DS); 
 		Thread threadTele=new Thread(arrTele); 
 		Thread threadCour=new Thread(arrCour); 
 		threadTele.start(); 

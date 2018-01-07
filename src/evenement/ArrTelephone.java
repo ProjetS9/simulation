@@ -1,18 +1,13 @@
 package evenement;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import loi.Lois;
 import variable.ClientTelephone;
-import variable.Variables;
 
 public class ArrTelephone implements Runnable{
-	private String threadName;
 	private double DS;
 	
-	public ArrTelephone(String name, float DS){
-		this.threadName = name;
+	public ArrTelephone(double DS){
 		this.DS = DS;  //Mettre ид jour DS (DateSimu)
 	}
 	

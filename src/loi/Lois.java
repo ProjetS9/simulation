@@ -2,14 +2,14 @@ package loi;
 
 public class Lois {
 	
-	public float exponentielle(){
-		float minutes = 0;
+	public double exponentielle(double d){
+		double minutes = 0;
 		return minutes;
 	}
 	
 	
-	public float uniforme(){
-		float minutes = 0;
+	public double uniforme(double i){
+		double minutes = 0;
 		return minutes;
 	}
 }

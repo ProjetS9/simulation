@@ -1,18 +1,17 @@
 package variable;
 
-import java.util.Date;
 
 public class ClientTelephone {
 	private int idClientT;
-	private Date dateArrT;
-	private Date dateAccT;
-	private Date dateDepT;
+	private double dateArrT;
+	private double dateAccT;
+	private double dateDepT;
 	
-	public ClientTelephone(){
-		idClientT = 0;
-		dateArrT = new Date();
-		dateAccT = new Date();
-		dateDepT = new Date();
+	public ClientTelephone(int idCT){
+		idClientT = idCT;
+		dateArrT = 0;
+		dateAccT = 0;
+		dateDepT = 0;
 	}
 	
 	public int getIdClientT() {
@@ -21,22 +20,22 @@ public class ClientTelephone {
 	public void setIdClientT(int idClientT) {
 		this.idClientT = idClientT;
 	}
-	public Date getDateArrT() {
+	public double getDateArrT() {
 		return dateArrT;
 	}
-	public void setDateArrT(Date dateArrT) {
-		this.dateArrT = dateArrT;
+	public void setDateArrT(double dS) {
+		this.dateArrT = dS;
 	}
-	public Date getDateAccT() {
+	public double getDateAccT() {
 		return dateAccT;
 	}
-	public void setDateAccT(Date dateAccT) {
+	public void setDateAccT(double dateAccT) {
 		this.dateAccT = dateAccT;
 	}
-	public Date getDateDepT() {
+	public double getDateDepT() {
 		return dateDepT;
 	}
-	public void setDateDepT(Date dateDepT) {
+	public void setDateDepT(double dateDepT) {
 		this.dateDepT = dateDepT;
 	}
 

@@ -1,18 +1,17 @@
 package variable;
 
-import java.util.Date;
 
 public class ClientCourriel {
 	private int idClientC;
-	private Date dateArrC;
-	private Date dateAccC;
-	private Date dateDepC;
+	private double dateArrC;
+	private double dateAccC;
+	private double dateDepC;
 	
-	public ClientCourriel(){
-		idClientC = 0;
-		dateArrC = new Date();
-		dateAccC = new Date();
-		dateDepC = new Date();
+	public ClientCourriel(int idCC){
+		idClientC = idCC;
+		dateArrC = 0;
+		dateAccC = 0;
+		dateDepC = 0;
 	}
 	
 	public int getIdClientC() {
@@ -21,22 +20,22 @@ public class ClientCourriel {
 	public void setIdClientC(int idClientC) {
 		this.idClientC = idClientC;
 	}
-	public Date getDateArrC() {
+	public double getDateArrC() {
 		return dateArrC;
 	}
-	public void setDateArrC(Date dateArrC) {
+	public void setDateArrC(double dateArrC) {
 		this.dateArrC = dateArrC;
 	}
-	public Date getDateAccC() {
+	public double getDateAccC() {
 		return dateAccC;
 	}
-	public void setDateAccC(Date dateAccC) {
+	public void setDateAccC(double dateAccC) {
 		this.dateAccC = dateAccC;
 	}
-	public Date getDateDepC() {
+	public double getDateDepC() {
 		return dateDepC;
 	}
-	public void setDateDepC(Date dateDepC) {
+	public void setDateDepC(double dateDepC) {
 		this.dateDepC = dateDepC;
 	}	
 }

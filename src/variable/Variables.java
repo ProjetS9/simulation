@@ -10,8 +10,8 @@ public class Variables {
 	private int NC;	//nombre de courriel dans la file d'attente de courriel
 	private int NTT;	//nombre de teleconseiller qui sont en train de repondre les telephones
 	
-	private float DS;	//Date de simulation
-	private float DDS;	//Derniere date de simulation
+	private double DS;	//Date de simulation
+	private double DDS;	//Derniere date de simulation
 	
 	private int counterArrClientT;	//le nombre total d'appels arriv¨¦
 	private int counterArrClientC;	//le nombre total de courriels arriv¨¦
@@ -28,8 +28,8 @@ public class Variables {
 		NT = 0;
 		NC = 0;
 		NTT = 0;
-		DS = 0;
-		DDS = 0;
+		DS = 8;
+		DDS = 8;
 		counterArrClientT = 0;
 		counterArrClientC = 0;
 		counterTraitClientC = 0;
@@ -75,16 +75,16 @@ public class Variables {
 	public void setNTT(int nTT) {
 		NTT = nTT;
 	}
-	public float getDS() {
+	public double getDS() {
 		return DS;
 	}
-	public void setDS(float dS) {
+	public void setDS(double dS) {
 		DS = dS;
 	}
-	public float getDDS() {
+	public double getDDS() {
 		return DDS;
 	}
-	public void setDDS(float dDS) {
+	public void setDDS(double dDS) {
 		DDS = dDS;
 	}
 	public int getCounterArrClientT() {

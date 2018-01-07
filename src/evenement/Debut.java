@@ -3,14 +3,16 @@ package evenement;
 import java.util.ArrayList;
 import java.util.List;
 
+import loi.Lois;
 import variable.Teleconseilleur;
 import variable.Variables;
 
 public class Debut {
-	private Variables var;
-	
+	public static Variables var;
+	public Double DS;
 	public Debut(){
 		var = new Variables();
+		DS = (double) 0;
 	}
 	
 	public void demarrer(int N, int Nt, int Ntmax){
@@ -39,8 +41,9 @@ public class Debut {
 		
 		var.setListTeleconseilleur(listTC);
 		
-		ArrTelephone arrTele=new ArrTelephone("Arrivee Telephone",var); 
-		ArrCouriel arrCour=new ArrCouriel("Arrivee Couriel",var); 
+		Lois loi = new Lois();
+		ArrTelephone arrTele=new ArrTelephone("Arrivee Telephone",DS+loi.exponentielle(5)); 
+		ArrCouriel arrCour=new ArrCouriel("Arrivee Courriel",DS); 
 		Thread threadTele=new Thread(arrTele); 
 		Thread threadCour=new Thread(arrCour); 
 		threadTele.start(); 

@@ -1,12 +1,12 @@
 package variable;
 
 public class Indicateurs {
-	private float tauxTraitCour;
-	private float tempsAttenteTele;
-	private float delaiRepCour;
-	private float tauxOccupTele;
-	private float tauxOccupCour;
-	private float ponderation;
+	private double tauxTraitCour;
+	private double tempsAttenteTele;
+	private double delaiRepCour;
+	private double tauxOccupTele;
+	private double tauxOccupCour;
+	private double ponderation;
 	
 	public Indicateurs(){
 		tauxTraitCour = 0;
@@ -17,40 +17,40 @@ public class Indicateurs {
 		ponderation = 0;
 	}
 	
-	public float getTauxTraitCour() {
+	public double getTauxTraitCour() {
 		return tauxTraitCour;
 	}
-	public void setTauxTraitCour(float tauxTraitCour) {
+	public void setTauxTraitCour(double tauxTraitCour) {
 		this.tauxTraitCour = tauxTraitCour;
 	}
-	public float getTempsAttenteTele() {
+	public double getTempsAttenteTele() {
 		return tempsAttenteTele;
 	}
-	public void setTempsAttenteTele(float tempsAttenteTele) {
+	public void setTempsAttenteTele(double tempsAttenteTele) {
 		this.tempsAttenteTele = tempsAttenteTele;
 	}
-	public float getDelaiRepCour() {
+	public double getDelaiRepCour() {
 		return delaiRepCour;
 	}
-	public void setDelaiRepCour(float delaiRepCour) {
+	public void setDelaiRepCour(double delaiRepCour) {
 		this.delaiRepCour = delaiRepCour;
 	}
-	public float getTauxOccupTele() {
+	public double getTauxOccupTele() {
 		return tauxOccupTele;
 	}
-	public void setTauxOccupTele(float tauxOccupTele) {
+	public void setTauxOccupTele(double tauxOccupTele) {
 		this.tauxOccupTele = tauxOccupTele;
 	}
-	public float getTauxOccupCour() {
+	public double getTauxOccupCour() {
 		return tauxOccupCour;
 	}
-	public void setTauxOccupCour(float tauxOccupCour) {
+	public void setTauxOccupCour(double tauxOccupCour) {
 		this.tauxOccupCour = tauxOccupCour;
 	}
-	public float getPonderation() {
+	public double getPonderation() {
 		return ponderation;
 	}
-	public void setPonderation(float ponderation) {
+	public void setPonderation(double ponderation) {
 		this.ponderation = ponderation;
 	}
 }

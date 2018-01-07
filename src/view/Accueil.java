@@ -144,7 +144,7 @@ public class Accueil extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(!NField.getText().equals("") && !NtField.getText().equals("") && !NtMaxField.getText().equals("")){
 					Debut debut = new Debut();
-					//debut.demarrer(Integer.parseInt(NField.getText()), Integer.parseInt(NtField.getText()), Integer.parseInt(NtMaxField.getText()));
+					debut.demarrer(Integer.parseInt(NField.getText()), Integer.parseInt(NtField.getText()), Integer.parseInt(NtMaxField.getText()));
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "Les champs \"N\", \"Nt\" et \"NtMax\"\nne peut pas ¨ºtre vides!", "Erreur", JOptionPane.ERROR_MESSAGE); 

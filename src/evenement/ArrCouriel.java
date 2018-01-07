@@ -3,6 +3,8 @@ package evenement;
 import java.util.Random;
 
 import loi.Lois;
+import variable.ClientCourriel;
+import variable.ClientTelephone;
 
 
 public class ArrCouriel implements Runnable{
@@ -30,7 +32,11 @@ public class ArrCouriel implements Runnable{
 			NC= Debut.var.getNC()+1;
 		}
 		Debut.var.setNC(NC);
-			
+		
+		ClientCourriel CC = new ClientCourriel(NC);
+		CC.setDateArrC(DS);
+		Debut.var.getListClientC().add(CC);
+		
 		int counterArrClientC = Debut.var.getCounterArrClientT()+1;
 		Debut.var.setCounterArrClientC(counterArrClientC);
 		System.out.println(Debut.var.getNC());
@@ -39,7 +45,7 @@ public class ArrCouriel implements Runnable{
 			if(Debut.var.getListTeleconseulleur().get(i).getB() == 0){  //si TCi est libre
 				if(Debut.var.getListTeleconseulleur().get(i).getTD() == 1){  //TCi doit r¨¦pondre le t¨¦l¨¦phone
 					AccTeleconseilleur accTC = new AccTeleconseilleur(DS);
-					accTC.operation(i,NC);
+					accTC.operation(i,Debut.var.getListClientC().get(0).getIdClientC());
 					break;
 				}
 			}

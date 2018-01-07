@@ -9,10 +9,11 @@ import variable.Variables;
 
 public class Debut {
 	public static Variables var;
-	public Double DS;
+	public double DS;
+	
 	public Debut(){
 		var = new Variables();
-		DS = (double) 0;
+		DS = 0;
 	}
 	
 	public void demarrer(int N, int Nt, int Ntmax){

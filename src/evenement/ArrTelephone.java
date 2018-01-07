@@ -40,7 +40,7 @@ public class ArrTelephone implements Runnable{
 			if(Debut.var.getListTeleconseulleur().get(i).getB() == 0){  //si TCi est libre
 				if(Debut.var.getListTeleconseulleur().get(i).getTD() == 0){  //TCi doit r¨¦pondre le t¨¦l¨¦phone
 					AccTeleconseilleur accTC = new AccTeleconseilleur(DS);
-					accTC.operation(i,NT);
+					accTC.operation(i,Debut.var.getListClientT().get(0).getIdClientT());
 					break;
 				}
 			}

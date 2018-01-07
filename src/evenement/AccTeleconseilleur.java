@@ -35,11 +35,15 @@ public class AccTeleconseilleur {
 			int NTT = Debut.var.getNTT() + 1;
 			Debut.var.setNTT(NTT);
 			
+			Debut.var.getListClientT().remove(0);
+			
 			DepTeleconseilleur depTC = new DepTeleconseilleur(DS + loi.uniforme(5, 15));
 		}
 		else{
 			int NC = Debut.var.getNC() - 1;
 			Debut.var.setNC(NC);
+			
+			Debut.var.getListClientC().remove(0);
 			
 			DepTeleconseilleur depTC = new DepTeleconseilleur(DS + loi.uniforme(3, 7));
 		}

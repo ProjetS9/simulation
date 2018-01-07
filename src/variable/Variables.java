@@ -1,7 +1,6 @@
 package variable;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Variables {
@@ -11,14 +10,14 @@ public class Variables {
 	private int NC;	//nombre de courriel dans la file d'attente de courriel
 	private int NTT;	//nombre de teleconseiller qui sont en train de repondre les telephones
 	
-	private Date DS;	//Date de simulation
-	private Date DDS;	//Derniere date de simulation
+	private float DS;	//Date de simulation
+	private float DDS;	//Derniere date de simulation
 	
 	private int counterArrClientT;	//le nombre total d'appels arriv¨¦
 	private int counterArrClientC;	//le nombre total de courriels arriv¨¦
 	private int counterTraitClientC;	////le nombre total de courriels trait¨¦
 	
-	private List<Teleconseilleur> listTeleconseulleur;
+	private List<Teleconseilleur> listTeleconseilleur;
 	private List<ClientTelephone> listClientT;	//la file d'attente de telephone
 	private List<ClientCourriel> listClientC;	//la file d'attent de courriel
 	
@@ -29,13 +28,13 @@ public class Variables {
 		NT = 0;
 		NC = 0;
 		NTT = 0;
-		DS = new Date();
-		DDS = new Date();
+		DS = 0;
+		DDS = 0;
 		counterArrClientT = 0;
 		counterArrClientC = 0;
 		counterTraitClientC = 0;
 		
-		listTeleconseulleur = new ArrayList<Teleconseilleur>();
+		listTeleconseilleur = new ArrayList<Teleconseilleur>();
 		listClientT = new ArrayList<ClientTelephone>();
 		listClientC = new ArrayList<ClientCourriel>();
 	}
@@ -76,16 +75,16 @@ public class Variables {
 	public void setNTT(int nTT) {
 		NTT = nTT;
 	}
-	public Date getDS() {
+	public float getDS() {
 		return DS;
 	}
-	public void setDS(Date dS) {
+	public void setDS(float dS) {
 		DS = dS;
 	}
-	public Date getDDS() {
+	public float getDDS() {
 		return DDS;
 	}
-	public void setDDS(Date dDS) {
+	public void setDDS(float dDS) {
 		DDS = dDS;
 	}
 	public int getCounterArrClientT() {
@@ -107,10 +106,10 @@ public class Variables {
 		this.counterTraitClientC = counterTraitClientC;
 	}
 	public List<Teleconseilleur> getListTeleconseulleur() {
-		return listTeleconseulleur;
+		return listTeleconseilleur;
 	}
-	public void setListTeleconseulleur(List<Teleconseilleur> listTeleconseulleur) {
-		this.listTeleconseulleur = listTeleconseulleur;
+	public void setListTeleconseilleur(List<Teleconseilleur> listTeleconseilleur) {
+		this.listTeleconseilleur = listTeleconseilleur;
 	}
 	public List<ClientTelephone> getListClientT() {
 		return listClientT;

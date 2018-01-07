@@ -6,8 +6,8 @@ public class Teleconseilleur {
 	private int TE;  //Travail que t¨¦l¨¦conseiller i est en train de faire
 	private int TD;  //Travail que t¨¦l¨¦conseiller i doit faire
 	
-	private Teleconseilleur(){
-		idTeleconseilleur = 0;
+	public Teleconseilleur(int idTC){
+		idTeleconseilleur = idTC;
 		B = 0;
 		TE = 0;
 		TD = 0;

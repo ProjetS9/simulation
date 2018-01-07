@@ -21,11 +21,13 @@ public class AccTeleconseilleur {
 			Debut.var.getListClientC().get(idClient).setDateAccC(DS);
 		}
 		
-		Debut.var.getListTeleconseulleur().get(idTeleconseilleur).setB(1);  //Changer le statut du TCi en ¡°occupe¡±
+		//Changer le statut du TCi en ¡°occupe¡±
+		Debut.var.getListTeleconseulleur().get(idTeleconseilleur).setB(1);  
 		
 		//Changer le statut du travail ¡°en train de faire¡± en le travail ¡°doit faire¡±
 		Debut.var.getListTeleconseulleur().get(idTeleconseilleur).setTE(Debut.var.getListTeleconseulleur().get(idTeleconseilleur).getTD()); 
 		
+		//TCi doit r¨¦pondre le t¨¦l¨¦phone
 		if(Debut.var.getListTeleconseulleur().get(idTeleconseilleur).getTD() == 0){
 			int NT = Debut.var.getNT() - 1;
 			Debut.var.setNT(NT);

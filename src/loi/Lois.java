@@ -8,7 +8,7 @@ public class Lois {
 	}
 	
 	
-	public double uniforme(double i){
+	public double uniforme(double i, double j){
 		double minutes = 0;
 		return minutes;
 	}

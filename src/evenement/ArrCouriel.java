@@ -39,7 +39,7 @@ public class ArrCouriel implements Runnable{
 			if(Debut.var.getListTeleconseulleur().get(i).getB() == 0){  //si TCi est libre
 				if(Debut.var.getListTeleconseulleur().get(i).getTD() == 1){  //TCi doit r¨¦pondre le t¨¦l¨¦phone
 					AccTeleconseilleur accTC = new AccTeleconseilleur(DS);
-					accTC.operation(i);
+					accTC.operation(i,NC);
 					break;
 				}
 			}

@@ -3,14 +3,10 @@ package evenement;
 
 import loi.Lois;
 import variable.ClientTelephone;
+import variable.Variables;
 
-<<<<<<< HEAD
 public class ArrTelephone extends Evenement{
-=======
-public class ArrTelephone implements Runnable{
->>>>>>> origin/master
-	private double DS;
-	
+
 	public ArrTelephone(double DS){
 		this.DS = DS;  //Mettre ид jour DS (DateSimu)
 	}

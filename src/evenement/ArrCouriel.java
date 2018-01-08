@@ -4,17 +4,11 @@ import java.util.Random;
 
 import loi.Lois;
 import variable.ClientCourriel;
-<<<<<<< HEAD
 import variable.ClientTelephone;
 import variable.Variables;
 
 
 public class ArrCouriel extends Evenement{
-=======
-
-
-public class ArrCouriel implements Runnable{
->>>>>>> origin/master
 	private double DS;
 	
 	public ArrCouriel(double DS){

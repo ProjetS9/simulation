@@ -42,18 +42,10 @@ public class Debut extends Evenement{
 		Variables.listTeleconseilleur = listTC;
 		
 		Lois loi = new Lois();
-<<<<<<< HEAD
+		
 		Evenement arrTele=new ArrTelephone(DS+loi.exponentielle(5)); 
 		Evenement arrCour=new ArrCouriel(DS);
 		ToDoQueue.toDoQueue.add(arrTele);
 		ToDoQueue.toDoQueue.add(arrCour);
-=======
-		ArrTelephone arrTele=new ArrTelephone(DS+loi.exponentielle(5)); 
-		ArrCouriel arrCour=new ArrCouriel(DS); 
-		Thread threadTele=new Thread(arrTele); 
-		Thread threadCour=new Thread(arrCour); 
-		threadTele.start(); 
-		threadCour.start();
->>>>>>> origin/master
 	}
 }

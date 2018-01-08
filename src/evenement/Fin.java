@@ -65,7 +65,7 @@ public class Fin extends Evenement{
 		Indicateurs.delaiRepCour = courrielMargin/ (double)(Variables.counterTraitClientC - count);
 		
 		Indicateurs.ponderation = 0.5*Indicateurs.tauxNonTraitCour + 0.2*Indicateurs.tempsAttenteTele + 
-				0.25*Indicateurs.tauxOccupTele + 0.025*Indicateurs.tauxOccupPoste + 0.025*Indicateurs.delaiRepCour;
+				0.25*(1-Indicateurs.tauxOccupTele) + 0.025*(1-Indicateurs.tauxOccupPoste) + 0.025*Indicateurs.delaiRepCour;
 		
 		Variables.stop = true;
 		System.out.println(Variables.counterTraitClientC);

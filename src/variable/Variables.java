@@ -35,6 +35,7 @@ public class Variables {
 		listTeleconseilleur = new ArrayList<Teleconseilleur>();
 		listClientT = new ArrayList<ClientTelephone>();
 		listClientC = new ArrayList<ClientCourriel>();
+		stop = false;
 	}
 	/*
 	public Variables() {

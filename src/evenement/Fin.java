@@ -1,5 +1,10 @@
 package evenement;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import variable.Indicateurs;
 import variable.Variables;
 
@@ -65,5 +70,29 @@ public class Fin extends Evenement{
 		Variables.stop = true;
 		System.out.println(Variables.counterTraitClientC);
 		System.out.println(Variables.counterArrClientT);
+		
+		try {
+			WriteToFile();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void WriteToFile() throws IOException{
+		 File file = new File("HistCourriels.txt");
+		 if(!file.exists())
+			 file.createNewFile();
+         BufferedWriter out = new BufferedWriter(new FileWriter(file));
+         String content="";
+         for(int i=0; i<Variables.counterTraitClientC; i++){
+			if(Variables.listClientC.get(i).getDateDepC() != 0){
+				content += String.valueOf(Variables.listClientC.get(i).getDateArrC())+"\t"
+						+String.valueOf(Variables.listClientC.get(i).getDateDepC()-Variables.listClientC.get(i).getDateAccC())+"\n";
+			}
+		}
+         out.write(content);
+         out.flush();
+         out.close();  
 	}
 }

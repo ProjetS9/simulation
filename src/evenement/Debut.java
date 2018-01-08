@@ -39,7 +39,7 @@ public class Debut extends Evenement{
 		Lois loi = new Lois();
 		
 		Evenement arrTele=new ArrTelephone(DS+loi.exponentielle(5)); 
-		Evenement arrCour=new ArrCouriel(DS);
+		Evenement arrCour=new ArrCourriel(DS);
 		Evenement fin = new Fin(720);
 		ToDoQueue.toDoQueue.offer(arrTele);
 		ToDoQueue.toDoQueue.offer(arrCour);

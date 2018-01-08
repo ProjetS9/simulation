@@ -1,44 +1,69 @@
 package evenement;
 
+import variable.Indicateurs;
 import variable.Variables;
 
 public class Fin extends Evenement{
 	
+	public Fin(double DS){
+		this.DS = DS;
+	}
+	
 	public void operation(){
-		double TTC;  //Taux de traitement de courriel
-		double TAT; //Temps moyen d¡¯attente au t¨¦l¨¦phone
-		double TOT;  //Taux d¡¯occupation des t¨¦l¨¦conseillers
-		double TOPT;  //Taux d¡¯occupation des postes t¨¦l¨¦phoniques
-		double DRC;  //D¨¦lai de r¨¦ponse aux courriel
-		double ponderation;
-		
-		TTC = Variables.counterTraitClientC / Variables.counterTraitClientC;
+
+		System.out.print("Fin----------------------");
+		System.out.println(DS);
+		Indicateurs.tauxNonTraitCour = 1 - Variables.counterTraitClientC / (double)Variables.counterArrClientC;
 		
 		int telephoneMargin = 0;
-		for(int i=0; i<Variables.counterArrClientT; i++)
-			telephoneMargin += Variables.listClientT.get(i).getDateAccT() - Variables.listClientT.get(i).getDateArrT();
-		TAT = telephoneMargin/Variables.counterArrClientT;
+		for(int i=0; i<Variables.counterArrClientT; i++){
+			if(Variables.listClientT.get(i).getDateAccT() != 0)
+				telephoneMargin += (Variables.listClientT.get(i).getDateAccT() - Variables.listClientT.get(i).getDateArrT());
+			else
+				telephoneMargin += (720 - Variables.listClientT.get(i).getDateArrT());
+		}
+		Indicateurs.tempsAttenteTele = telephoneMargin/Variables.counterArrClientT;
 		
 		int TeleconseilleurOccupe = 0;
-		for(int i=0; i<Variables.N; i++){
-			if(Variables.listTeleconseilleur.get(i).getB() == 1)
-				TeleconseilleurOccupe ++;
+		for(int i=0; i<Variables.counterTraitClientT; i++){
+			if(Variables.listClientT.get(i).getDateDepT() == 0)
+				TeleconseilleurOccupe += (720 - Variables.listClientT.get(i).getDateAccT());
+			else
+				TeleconseilleurOccupe += (Variables.listClientT.get(i).getDateDepT() - Variables.listClientT.get(i).getDateAccT());
 		}
-		TOT = TeleconseilleurOccupe / Variables.N;
+		for(int i=0; i<Variables.counterTraitClientC; i++){
+			if(Variables.listClientC.get(i).getDateDepC() == 0)
+				TeleconseilleurOccupe += (720 - Variables.listClientC.get(i).getDateAccC());
+			else
+				TeleconseilleurOccupe += (Variables.listClientC.get(i).getDateDepC() - Variables.listClientC.get(i).getDateAccC());
+		}
+		Indicateurs.tauxOccupTele = TeleconseilleurOccupe / (double)(Variables.N * (720 - 480));
 		
 		int PosteTelephoniqueOccupe = 0;
-		for(int i=0; i<Variables.N; i++){
-			if(Variables.listTeleconseilleur.get(i).getTE() == 0 &&
-					Variables.listTeleconseilleur.get(i).getB() == 1)
-				PosteTelephoniqueOccupe ++;
+		for(int i=0; i<Variables.counterTraitClientT; i++){
+			if(Variables.listClientT.get(i).getDateDepT() == 0)
+				PosteTelephoniqueOccupe += (720 - Variables.listClientT.get(i).getDateAccT());
+			else
+				PosteTelephoniqueOccupe += (Variables.listClientT.get(i).getDateDepT() - Variables.listClientT.get(i).getDateAccT());
 		}
-		TOPT = PosteTelephoniqueOccupe/Variables.NTT;
+		Indicateurs.tauxOccupPoste = PosteTelephoniqueOccupe / (double)(Variables.Ntmax * (720 - 480));
 		
 		int courrielMargin = 0;
-		for(int i=0; i<Variables.counterTraitClientC; i++)
-			courrielMargin += Variables.listClientC.get(i).getDateAccC()-Variables.listClientC.get(i).getDateArrC();
-		DRC = courrielMargin/Variables.counterTraitClientC;
+		int count = 0;
+		for(int i=0; i<Variables.counterTraitClientC; i++){
+			if(Variables.listClientC.get(i).getDateDepC() == 0)
+				count++;
+			else
+				courrielMargin += Variables.listClientC.get(i).getDateDepC()-Variables.listClientC.get(i).getDateArrC();
+		}
+			
+		Indicateurs.delaiRepCour = courrielMargin/ (double)(Variables.counterTraitClientC - count);
 		
-		ponderation = 0.5*TTC + 0.2*TAT + 0.25*TOT + 0.025*TOPT + 0.025*DRC;
+		Indicateurs.ponderation = 0.5*Indicateurs.tauxNonTraitCour + 0.2*Indicateurs.tempsAttenteTele + 
+				0.25*Indicateurs.tauxOccupTele + 0.025*Indicateurs.tauxOccupPoste + 0.025*Indicateurs.delaiRepCour;
+		
+		Variables.stop = true;
+		System.out.println(Variables.counterTraitClientC);
+		System.out.println(Variables.counterArrClientT);
 	}
 }

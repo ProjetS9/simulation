@@ -1,8 +1,9 @@
 package evenement;
 
-public class Evenement {
+public abstract class Evenement {
 	public double DS;
 	public int priorite;
+	public double DDS;
 	
-	public void operation(){}
+	public abstract void operation();
 }

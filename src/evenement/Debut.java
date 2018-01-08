@@ -9,32 +9,27 @@ import variable.ToDoQueue;
 import variable.Variables;
 
 public class Debut extends Evenement{
-	public double DS;
 	
-	public Debut(){
-		DS = 0;
+	public Debut(double DS){
+		this.DS = DS;
 	}
 	
-	public void operation(int N, int Nt, int Ntmax){
-		Variables.N = N;
-		Variables.Nt = Nt;
-		Variables.Ntmax = Ntmax;
-		
+	public void operation(){
 		
 		int i;
 		Teleconseilleur TC = null;
 		List<Teleconseilleur> listTC = new ArrayList<Teleconseilleur>();
-		for(i=0;i<N;i++){
+		for(i=0;i<Variables.N;i++){
 			TC = new Teleconseilleur(i);
 			listTC.add(TC);
 		}
 		
-		for(i=0;i<Nt;i++){
+		for(i=0;i<Variables.Nt;i++){
 			listTC.get(i).setTE(0);
 			listTC.get(i).setTD(0);
 		}
 		
-		for(i=Nt;i<N;i++){
+		for(i=Variables.Nt;i<Variables.N;i++){
 			listTC.get(i).setTE(1);
 			listTC.get(i).setTD(1);
 		}
@@ -45,7 +40,9 @@ public class Debut extends Evenement{
 		
 		Evenement arrTele=new ArrTelephone(DS+loi.exponentielle(5)); 
 		Evenement arrCour=new ArrCouriel(DS);
-		ToDoQueue.toDoQueue.add(arrTele);
-		ToDoQueue.toDoQueue.add(arrCour);
+		Evenement fin = new Fin(720);
+		ToDoQueue.toDoQueue.offer(arrTele);
+		ToDoQueue.toDoQueue.offer(arrCour);
+		ToDoQueue.toDoQueue.offer(fin);
 	}
 }

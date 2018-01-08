@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import evenement.Debut;
+import evenement.Evenement;
+import variable.Indicateurs;
+import variable.Variables;
 
 
 public class Accueil extends JFrame{
@@ -76,7 +79,7 @@ public class Accueil extends JFrame{
 		NtMaxField.setBounds(355, 120, 175, 25);
 		this.add(NtMaxField);
 		
-		telLabel = new JLabel("Taux de traitement de courriel :");
+		telLabel = new JLabel("Taux de non-traitement de courriel :");
 		telLabel.setFont(new Font("Cambria", Font.PLAIN, 15));
 		telLabel.setBounds(50, 210, 300, 25);
 		this.add(telLabel);
@@ -137,14 +140,25 @@ public class Accueil extends JFrame{
 		this.add(confirm);
 		this.add(cancel);	
 		this.setVisible(true);
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		
 		confirm.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!NField.getText().equals("") && !NtField.getText().equals("") && !NtMaxField.getText().equals("")){
-					Debut debut = new Debut();
-					debut.operation(Integer.parseInt(NField.getText()), Integer.parseInt(NtField.getText()), Integer.parseInt(NtMaxField.getText()));
+					Variables.init();
+					Variables.N = Integer.parseInt(NField.getText());
+					Variables.Nt = Integer.parseInt(NtField.getText());
+					Variables.Ntmax = Integer.parseInt(NtMaxField.getText());
+					Main main = new Main();
+					main.run();
+					telField.setText(String.valueOf(Indicateurs.tauxNonTraitCour));
+					couField.setText(String.valueOf(Indicateurs.tempsAttenteTele));
+					tauxToutField.setText(String.valueOf(Indicateurs.tauxOccupTele));
+					tauxTelField.setText(String.valueOf(Indicateurs.tauxOccupPoste));
+					delaiField.setText(String.valueOf(Indicateurs.delaiRepCour));
+					pondField.setText(String.valueOf(Indicateurs.ponderation));
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "Les champs \"N\", \"Nt\" et \"NtMax\"\nne peut pas ¨ºtre vides!", "Erreur", JOptionPane.ERROR_MESSAGE); 

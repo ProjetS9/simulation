@@ -16,11 +16,26 @@ public class Variables {
 	public static int counterArrClientT = 0;	//le nombre total d'appels arriv¨¦
 	public static int counterArrClientC = 0;	//le nombre total de courriels arriv¨¦
 	public static int counterTraitClientC = 0;	////le nombre total de courriels trait¨¦
+	public static int counterTraitClientT = 0;
 	
 	public static List<Teleconseilleur> listTeleconseilleur = new ArrayList<Teleconseilleur>();
 	public static List<ClientTelephone> listClientT = new ArrayList<ClientTelephone>();	//la file d'attente de telephone
 	public static List<ClientCourriel> listClientC = new ArrayList<ClientCourriel>();	//la file d'attent de courriel
 	
+	public static boolean stop = false;
+	
+	public static void init(){
+		N = 0; Nt = 0; Ntmax = 0;
+		NT = 0; NC = 0; NTT = 0;
+		DS = 0; DDS = 0;
+		counterArrClientT = 0;
+		counterArrClientC = 0;
+		counterTraitClientC = 0;
+		counterTraitClientT = 0;
+		listTeleconseilleur = new ArrayList<Teleconseilleur>();
+		listClientT = new ArrayList<ClientTelephone>();
+		listClientC = new ArrayList<ClientCourriel>();
+	}
 	/*
 	public Variables() {
 		N = 0;

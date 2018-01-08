@@ -1,13 +1,14 @@
 package evenement;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import loi.Lois;
 import variable.ClientTelephone;
-import variable.Variables;
 
+<<<<<<< HEAD
 public class ArrTelephone extends Evenement{
+=======
+public class ArrTelephone implements Runnable{
+>>>>>>> origin/master
 	private double DS;
 	
 	public ArrTelephone(double DS){

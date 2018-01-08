@@ -43,7 +43,7 @@ public class Accueil extends JFrame{
 	final JButton cancel;
 	
 	public Accueil(){
-		// TODO ×Ô¶¯Éú³ÉµÄ¹¹Ôìº¯Êý´æ¸ù
+		// TODO è‡ªåŠ¨ç”Ÿæˆçš„æž„é€ å‡½æ•°å­˜æ ¹
 		this.setTitle(" Simulateur ");
 		this.setBounds(200, 200, 600, 490);
 		this.setResizable(false);
@@ -88,7 +88,7 @@ public class Accueil extends JFrame{
 		telField.setEditable(false);
 		this.add(telField);
 
-		couLabel = new JLabel("Temps moyen d¡¯attente au t¨¦l¨¦phone :");
+		couLabel = new JLabel("Temps moyen dâ€™attente au tÃ©lÃ©phone :");
 		couLabel.setFont(new Font("Cambria", Font.PLAIN, 15));
 		couLabel.setBounds(50, 240, 300, 25);
 		this.add(couLabel);
@@ -97,7 +97,7 @@ public class Accueil extends JFrame{
 		couField.setEditable(false);
 		this.add(couField);
 
-		tauxToutLabel = new JLabel("Taux d¡¯occupation des t¨¦l¨¦conseillers :");
+		tauxToutLabel = new JLabel("Taux dâ€™occupation des tÃ©lÃ©conseillers :");
 		tauxToutLabel.setFont(new Font("Cambria", Font.PLAIN, 15));
 		tauxToutLabel.setBounds(50, 270, 300, 25);
 		this.add(tauxToutLabel);
@@ -106,7 +106,7 @@ public class Accueil extends JFrame{
 		tauxToutField.setEditable(false);
 		this.add(tauxToutField);
 
-		tauxTelLabel = new JLabel("Taux d¡¯occupation des postes t¨¦l¨¦phoniques :");
+		tauxTelLabel = new JLabel("Taux dâ€™occupation des postes tÃ©lÃ©phoniques :");
 		tauxTelLabel.setFont(new Font("Cambria", Font.PLAIN, 15));
 		tauxTelLabel.setBounds(50, 300, 300, 25);
 		this.add(tauxTelLabel);
@@ -115,7 +115,7 @@ public class Accueil extends JFrame{
 		tauxTelField.setEditable(false);
 		this.add(tauxTelField);
 		
-		delaiLabel = new JLabel("D¨¦lai de r¨¦ponse aux courriels :");
+		delaiLabel = new JLabel("DÃ©lai de rÃ©ponse aux courriels :");
 		delaiLabel.setFont(new Font("Cambria", Font.PLAIN, 15));
 		delaiLabel.setBounds(50, 330, 300, 25);
 		this.add(delaiLabel);
@@ -124,7 +124,7 @@ public class Accueil extends JFrame{
 		delaiField.setEditable(false);
 		this.add(delaiField);
 		
-		pondLabel = new JLabel("Pond¨¦ration :");
+		pondLabel = new JLabel("PondÃ©ration :");
 		pondLabel.setFont(new Font("Cambria", Font.PLAIN, 15));
 		pondLabel.setBounds(50, 360, 300, 25);
 		this.add(pondLabel);
@@ -147,21 +147,37 @@ public class Accueil extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(!NField.getText().equals("") && !NtField.getText().equals("") && !NtMaxField.getText().equals("")){
-					Variables.init();
-					Variables.N = Integer.parseInt(NField.getText());
-					Variables.Nt = Integer.parseInt(NtField.getText());
-					Variables.Ntmax = Integer.parseInt(NtMaxField.getText());
-					Main main = new Main();
-					main.run();
-					telField.setText(String.valueOf(Indicateurs.tauxNonTraitCour));
-					couField.setText(String.valueOf(Indicateurs.tempsAttenteTele));
-					tauxToutField.setText(String.valueOf(Indicateurs.tauxOccupTele));
-					tauxTelField.setText(String.valueOf(Indicateurs.tauxOccupPoste));
-					delaiField.setText(String.valueOf(Indicateurs.delaiRepCour));
-					pondField.setText(String.valueOf(Indicateurs.ponderation));
+					if(isNumeric(NField.getText()) == true && isNumeric(NtField.getText()) == true
+							&& isNumeric(NtMaxField.getText()) == true){
+						if(Integer.parseInt(NField.getText()) >= Integer.parseInt(NtMaxField.getText()) && 
+								Integer.parseInt(NtMaxField.getText()) >= Integer.parseInt(NtField.getText())){
+								Variables.init();
+								Variables.N = Integer.parseInt(NField.getText());
+								Variables.Nt = Integer.parseInt(NtField.getText());
+								Variables.Ntmax = Integer.parseInt(NtMaxField.getText());
+							
+								Main main = new Main();
+								main.run();
+								telField.setText(String.valueOf(Indicateurs.tauxNonTraitCour));
+								couField.setText(String.valueOf(Indicateurs.tempsAttenteTele));
+								tauxToutField.setText(String.valueOf(Indicateurs.tauxOccupTele));
+								tauxTelField.setText(String.valueOf(Indicateurs.tauxOccupPoste));
+								delaiField.setText(String.valueOf(Indicateurs.delaiRepCour));
+								pondField.setText(String.valueOf(Indicateurs.ponderation));
+						}
+						else{
+							JOptionPane.showMessageDialog(null, "Il faut respecter \"Nt <= NtMax <= N!", 
+									"Erreur", JOptionPane.ERROR_MESSAGE); 
+						}
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "Les trois champs ne contiennet que des chiffres!", 
+								"Erreur", JOptionPane.ERROR_MESSAGE); 
+					}
 				}
 				else{
-					JOptionPane.showMessageDialog(null, "Les champs \"N\", \"Nt\" et \"NtMax\"\nne peut pas ¨ºtre vides!", "Erreur", JOptionPane.ERROR_MESSAGE); 
+					JOptionPane.showMessageDialog(null, "Les champs \"N\", \"Nt\" et \"NtMax\"\nne peut pas Ãªtre vides!", 
+							"Erreur", JOptionPane.ERROR_MESSAGE); 
 				}
 			}
 		});
@@ -174,5 +190,15 @@ public class Accueil extends JFrame{
 			}
 		});
 	}
-
+	
+	/*Verifier si la chaÃ®ne de caractÃ¨re ne contient que des chiffre*/
+	public boolean isNumeric(String str){
+		for(int i = 0;i < str.length();i++){
+			if (!Character.isDigit(str.charAt(i))){
+				return false;
+				}
+		}
+		return true;
+	}
+	
 }

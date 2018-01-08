@@ -16,8 +16,7 @@ public class ToDoQueue {
 				else
 					return 1;
 				}
-			else
-				return (int)(e1.priorite-e2.priorite);
+			return 0;
 			}
 		};
 		

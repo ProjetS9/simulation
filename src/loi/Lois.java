@@ -8,8 +8,8 @@ public class Lois {
 	public double exponentielle(double lambda){
 		double minutes = 0;
 		if(lambda >= 0){
-			double p = ran.nextFloat();
-			minutes = - Math.log(1-p) / (double) lambda;
+			double p = ran.nextDouble();
+			minutes = - Math.log(1-p) * (double) lambda;
 		}
 		else
 			minutes = -1;
@@ -22,7 +22,7 @@ public class Lois {
 		if(debut > fin)
 			return minutes = -1;
 		else{
-			minutes = debut + ran.nextFloat() * (fin - debut);
+			minutes = debut + ran.nextDouble() * (fin - debut);
 		}
 		return minutes;
 	}

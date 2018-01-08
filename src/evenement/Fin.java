@@ -1,6 +1,8 @@
 package evenement;
 
-public class Fin {
+import variable.Variables;
+
+public class Fin extends Evenement{
 	
 	public void operation(){
 		double TTC;  //Taux de traitement de courriel
@@ -10,32 +12,32 @@ public class Fin {
 		double DRC;  //D¨¦lai de r¨¦ponse aux courriel
 		double ponderation;
 		
-		TTC = Debut.var.getCounterTraitClientC()/Debut.var.getCounterTraitClientC();
+		TTC = Variables.counterTraitClientC / Variables.counterTraitClientC;
 		
 		int telephoneMargin = 0;
-		for(int i=0; i<Debut.var.getCounterArrClientT(); i++)
-			telephoneMargin += Debut.var.getListClientT().get(i).getDateAccT() - Debut.var.getListClientT().get(i).getDateArrT();
-		TAT = telephoneMargin/Debut.var.getCounterArrClientT();
+		for(int i=0; i<Variables.counterArrClientT; i++)
+			telephoneMargin += Variables.listClientT.get(i).getDateAccT() - Variables.listClientT.get(i).getDateArrT();
+		TAT = telephoneMargin/Variables.counterArrClientT;
 		
 		int TeleconseilleurOccupe = 0;
-		for(int i=0; i<Debut.var.getN(); i++){
-			if(Debut.var.getListTeleconseulleur().get(i).getB() == 1)
+		for(int i=0; i<Variables.N; i++){
+			if(Variables.listTeleconseilleur.get(i).getB() == 1)
 				TeleconseilleurOccupe ++;
 		}
-		TOT = TeleconseilleurOccupe / Debut.var.getN();
+		TOT = TeleconseilleurOccupe / Variables.N;
 		
 		int PosteTelephoniqueOccupe = 0;
-		for(int i=0; i<Debut.var.getN(); i++){
-			if(Debut.var.getListTeleconseulleur().get(i).getTE() == 0 &&
-					Debut.var.getListTeleconseulleur().get(i).getB() == 1)
+		for(int i=0; i<Variables.N; i++){
+			if(Variables.listTeleconseilleur.get(i).getTE() == 0 &&
+					Variables.listTeleconseilleur.get(i).getB() == 1)
 				PosteTelephoniqueOccupe ++;
 		}
-		TOPT = PosteTelephoniqueOccupe/Debut.var.getNTT();
+		TOPT = PosteTelephoniqueOccupe/Variables.NTT;
 		
 		int courrielMargin = 0;
-		for(int i=0; i<Debut.var.getCounterTraitClientC(); i++)
-			courrielMargin += Debut.var.getListClientC().get(i).getDateAccC()-Debut.var.getListClientC().get(i).getDateArrC();
-		DRC = courrielMargin/Debut.var.getCounterTraitClientC();
+		for(int i=0; i<Variables.counterTraitClientC; i++)
+			courrielMargin += Variables.listClientC.get(i).getDateAccC()-Variables.listClientC.get(i).getDateArrC();
+		DRC = courrielMargin/Variables.counterTraitClientC;
 		
 		ponderation = 0.5*TTC + 0.2*TAT + 0.25*TOT + 0.025*TOPT + 0.025*DRC;
 	}

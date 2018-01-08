@@ -5,20 +5,14 @@ import java.util.Random;
 import loi.Lois;
 import variable.ClientCourriel;
 import variable.ClientTelephone;
+import variable.Variables;
 
 
-public class ArrCouriel implements Runnable{
-	private String threadName;
+public class ArrCouriel extends Evenement{
 	private double DS;
 	
-	public ArrCouriel(String name,float DS){
-		this.threadName = name;
+	public ArrCouriel(double DS){
 		this.DS = DS;  //Mettre ¨¤ jour DS (DateSimu)
-	}
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		operation();
 	}
 	
 	public void operation(){
@@ -29,23 +23,23 @@ public class ArrCouriel implements Runnable{
 	        NC = random.nextInt(80-20+1) + 20;
 		}
 		else{
-			NC= Debut.var.getNC()+1;
+			NC= Variables.NC + 1;
 		}
-		Debut.var.setNC(NC);
+		Variables.NC = NC;
 		
 		ClientCourriel CC = new ClientCourriel(NC);
 		CC.setDateArrC(DS);
-		Debut.var.getListClientC().add(CC);
+		Variables.listClientC.add(CC);
 		
-		int counterArrClientC = Debut.var.getCounterArrClientT()+1;
-		Debut.var.setCounterArrClientC(counterArrClientC);
-		System.out.println(Debut.var.getNC());
+		int counterArrClientC = Variables.counterArrClientT+1;
+		Variables.counterArrClientC = counterArrClientC;
+		System.out.println(Variables.NC);
 		
-		for(int i=0; i< Debut.var.getN();i++){
-			if(Debut.var.getListTeleconseulleur().get(i).getB() == 0){  //si TCi est libre
-				if(Debut.var.getListTeleconseulleur().get(i).getTD() == 1){  //TCi doit r¨¦pondre le t¨¦l¨¦phone
+		for(int i=0; i< Variables.N;i++){
+			if(Variables.listTeleconseilleur.get(i).getB() == 0){  //si TCi est libre
+				if(Variables.listTeleconseilleur.get(i).getTD() == 1){  //TCi doit r¨¦pondre le t¨¦l¨¦phone
 					AccTeleconseilleur accTC = new AccTeleconseilleur(DS);
-					accTC.operation(i,Debut.var.getListClientC().get(0).getIdClientC());
+					accTC.operation(i,Variables.listClientC.get(0).getIdClientC());
 					break;
 				}
 			}

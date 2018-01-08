@@ -7,40 +7,32 @@ import loi.Lois;
 import variable.ClientTelephone;
 import variable.Variables;
 
-public class ArrTelephone implements Runnable{
-	private String threadName;
+public class ArrTelephone extends Evenement{
 	private double DS;
 	
-	public ArrTelephone(String name, float DS){
-		this.threadName = name;
+	public ArrTelephone(double DS){
 		this.DS = DS;  //Mettre ¨¤ jour DS (DateSimu)
-	}
-	
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		operation();
 	}
 	
 	public void operation(){
 		Lois loi = new Lois();
 		
-		int NT = Debut.var.getNT()+1;
-		Debut.var.setNT(NT);
+		int NT = Variables.NT + 1;
+		Variables.NT = NT;
 		
 		ClientTelephone CT = new ClientTelephone(NT);
 		CT.setDateArrT(DS);
-		Debut.var.getListClientT().add(CT);
+		Variables.listClientT.add(CT);
 		
-		int counterArrClientT = Debut.var.getCounterArrClientT()+1;
-		Debut.var.setCounterArrClientT(counterArrClientT);
-		System.out.println(Debut.var.getNT());
+		int counterArrClientT = Variables.counterArrClientT+1;
+		Variables.counterArrClientT = counterArrClientT;
+		System.out.println(Variables.NT);
 		
-		for(int i=0; i< Debut.var.getN();i++){
-			if(Debut.var.getListTeleconseulleur().get(i).getB() == 0){  //si TCi est libre
-				if(Debut.var.getListTeleconseulleur().get(i).getTD() == 0){  //TCi doit r¨¦pondre le t¨¦l¨¦phone
+		for(int i=0; i< Variables.N;i++){
+			if(Variables.listTeleconseilleur.get(i).getB() == 0){  //si TCi est libre
+				if(Variables.listTeleconseilleur.get(i).getTD() == 0){  //TCi doit r¨¦pondre le t¨¦l¨¦phone
 					AccTeleconseilleur accTC = new AccTeleconseilleur(DS);
-					accTC.operation(i,Debut.var.getListClientT().get(0).getIdClientT());
+					accTC.operation(i,Variables.listClientT.get(0).getIdClientT());
 					break;
 				}
 			}

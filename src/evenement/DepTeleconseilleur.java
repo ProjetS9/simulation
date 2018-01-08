@@ -1,6 +1,8 @@
 package evenement;
 
-public class DepTeleconseilleur {
+import variable.Variables;
+
+public class DepTeleconseilleur extends Evenement{
 	private double DS;
 	
 	public DepTeleconseilleur(double DS){
@@ -10,12 +12,12 @@ public class DepTeleconseilleur {
 	public void operation(int idTeleconseilleur){
 		
 		//Changer le statut du TCi en ¡°libre¡±
-		Debut.var.getListTeleconseulleur().get(idTeleconseilleur).setB(0); 
+		Variables.listTeleconseilleur.get(idTeleconseilleur).setB(0); 
 		
 		//TCi est en train de r¨¦pondre telephone
-		if(Debut.var.getListTeleconseulleur().get(idTeleconseilleur).getTE() == 0){
-			int NTT = Debut.var.getNTT() - 1;
-			Debut.var.setNTT(NTT);
+		if(Variables.listTeleconseilleur.get(idTeleconseilleur).getTE() == 0){
+			int NTT = Variables.NTT - 1;
+			Variables.NTT = NTT;
 		}
 		
 		Reorganisation reorg = new Reorganisation(DS);

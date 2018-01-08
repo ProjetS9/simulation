@@ -5,21 +5,20 @@ import java.util.List;
 
 import loi.Lois;
 import variable.Teleconseilleur;
+import variable.ToDoQueue;
 import variable.Variables;
 
-public class Debut {
-	public static Variables var;
+public class Debut extends Evenement{
 	public double DS;
 	
 	public Debut(){
-		var = new Variables();
 		DS = 0;
 	}
 	
-	public void demarrer(int N, int Nt, int Ntmax){
-		var.setN(N);
-		var.setNt(Nt);
-		var.setNtmax(Ntmax);
+	public void operation(int N, int Nt, int Ntmax){
+		Variables.N = N;
+		Variables.Nt = Nt;
+		Variables.Ntmax = Ntmax;
 		
 		
 		int i;
@@ -40,14 +39,12 @@ public class Debut {
 			listTC.get(i).setTD(1);
 		}
 		
-		var.setListTeleconseilleur(listTC);
+		Variables.listTeleconseilleur = listTC;
 		
 		Lois loi = new Lois();
-		ArrTelephone arrTele=new ArrTelephone("Arrivee Telephone",DS+loi.exponentielle(5)); 
-		ArrCouriel arrCour=new ArrCouriel("Arrivee Courriel",DS); 
-		Thread threadTele=new Thread(arrTele); 
-		Thread threadCour=new Thread(arrCour); 
-		threadTele.start(); 
-		threadCour.start();
+		Evenement arrTele=new ArrTelephone(DS+loi.exponentielle(5)); 
+		Evenement arrCour=new ArrCouriel(DS);
+		ToDoQueue.toDoQueue.add(arrTele);
+		ToDoQueue.toDoQueue.add(arrCour);
 	}
 }

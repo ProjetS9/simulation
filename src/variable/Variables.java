@@ -4,23 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Variables {
-	private int N, Nt, Ntmax;
+	public static int N = 0, Nt = 0, Ntmax = 0;
 	
-	private int NT;	//nombre d'appel (telephone) dans la file d'attente de telephone
-	private int NC;	//nombre de courriel dans la file d'attente de courriel
-	private int NTT;	//nombre de teleconseiller qui sont en train de repondre les telephones
+	public static int NT = 0;	//nombre d'appel (telephone) dans la file d'attente de telephone
+	public static int NC = 0;	//nombre de courriel dans la file d'attente de courriel
+	public static int NTT = 0;	//nombre de teleconseiller qui sont en train de repondre les telephones
 	
-	private double DS;	//Date de simulation
-	private double DDS;	//Derniere date de simulation
+	public static double DS = 0;	//Date de simulation
+	public static double DDS = 0;	//Derniere date de simulation
 	
-	private int counterArrClientT;	//le nombre total d'appels arriv¨¦
-	private int counterArrClientC;	//le nombre total de courriels arriv¨¦
-	private int counterTraitClientC;	////le nombre total de courriels trait¨¦
+	public static int counterArrClientT = 0;	//le nombre total d'appels arriv¨¦
+	public static int counterArrClientC = 0;	//le nombre total de courriels arriv¨¦
+	public static int counterTraitClientC = 0;	////le nombre total de courriels trait¨¦
 	
-	private List<Teleconseilleur> listTeleconseilleur;
-	private List<ClientTelephone> listClientT;	//la file d'attente de telephone
-	private List<ClientCourriel> listClientC;	//la file d'attent de courriel
+	public static List<Teleconseilleur> listTeleconseilleur = new ArrayList<Teleconseilleur>();
+	public static List<ClientTelephone> listClientT = new ArrayList<ClientTelephone>();	//la file d'attente de telephone
+	public static List<ClientCourriel> listClientC = new ArrayList<ClientCourriel>();	//la file d'attent de courriel
 	
+	/*
 	public Variables() {
 		N = 0;
 		Nt = 0;
@@ -38,7 +39,7 @@ public class Variables {
 		listClientT = new ArrayList<ClientTelephone>();
 		listClientC = new ArrayList<ClientCourriel>();
 	}
-	
+
 	public int getN() {
 		return N;
 	}
@@ -123,5 +124,6 @@ public class Variables {
 	public void setListClientC(List<ClientCourriel> listClientC) {
 		this.listClientC = listClientC;
 	}
+	*/
 	
 }

@@ -1,9 +1,9 @@
 package evenement;
 
 import loi.Lois;
+import variable.Variables;
 
-public class AccTeleconseilleur {
-	private double DS;
+public class AccTeleconseilleur extends Evenement{
 	
 	public AccTeleconseilleur(double DS){
 		this.DS = DS;  //Mettre ¨¤ jour DS (DateSimu)
@@ -12,38 +12,38 @@ public class AccTeleconseilleur {
 	public void operation(int idTeleconseilleur, int idClient){
 		Lois loi = new Lois();
 		
-		if(Debut.var.getListTeleconseulleur().get(idTeleconseilleur).getTE() == 0){
-			Debut.var.getListClientT().get(idClient).setDateAccT(DS);
+		if(Variables.listTeleconseilleur.get(idTeleconseilleur).getTE() == 0){
+			Variables.listClientT.get(idClient).setDateAccT(DS);
 		}
 		else{
-			int counterTraitClientC = Debut.var.getCounterTraitClientC()+1;
-			Debut.var.setCounterTraitClientC(counterTraitClientC);
-			Debut.var.getListClientC().get(idClient).setDateAccC(DS);
+			int counterTraitClientC = Variables.counterTraitClientC+1;
+			Variables.counterTraitClientC = counterTraitClientC;
+			Variables.listClientC.get(idClient).setDateAccC(DS);
 		}
 		
 		//Changer le statut du TCi en ¡°occupe¡±
-		Debut.var.getListTeleconseulleur().get(idTeleconseilleur).setB(1);  
+		Variables.listTeleconseilleur.get(idTeleconseilleur).setB(1);  
 		
 		//Changer le statut du travail ¡°en train de faire¡± en le travail ¡°doit faire¡±
-		Debut.var.getListTeleconseulleur().get(idTeleconseilleur).setTE(Debut.var.getListTeleconseulleur().get(idTeleconseilleur).getTD()); 
+		Variables.listTeleconseilleur.get(idTeleconseilleur).setTE(Variables.listTeleconseilleur.get(idTeleconseilleur).getTD()); 
 		
 		//TCi doit r¨¦pondre le t¨¦l¨¦phone
-		if(Debut.var.getListTeleconseulleur().get(idTeleconseilleur).getTD() == 0){
-			int NT = Debut.var.getNT() - 1;
-			Debut.var.setNT(NT);
+		if(Variables.listTeleconseilleur.get(idTeleconseilleur).getTD() == 0){
+			int NT = Variables.NT - 1;
+			Variables.NT = NT;
 			
-			int NTT = Debut.var.getNTT() + 1;
-			Debut.var.setNTT(NTT);
+			int NTT = Variables.NTT + 1;
+			Variables.NTT = NTT;
 			
-			Debut.var.getListClientT().remove(0);
+			Variables.listClientT.remove(0);
 			
 			DepTeleconseilleur depTC = new DepTeleconseilleur(DS + loi.uniforme(5, 15));
 		}
 		else{
-			int NC = Debut.var.getNC() - 1;
-			Debut.var.setNC(NC);
+			int NC = Variables.NC - 1;
+			Variables.NC = NC;
 			
-			Debut.var.getListClientC().remove(0);
+			Variables.listClientC.remove(0);
 			
 			DepTeleconseilleur depTC = new DepTeleconseilleur(DS + loi.uniforme(3, 7));
 		}
